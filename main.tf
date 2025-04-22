@@ -1,18 +1,16 @@
 # 创建 EFS 文件系统
 resource "aws_efs_file_system" "example" {
   creation_token = "my-efs-token"
-  name           = var.efs_name
-  
+
   # 可选配置：设置吞吐量模式和生命周期策略
   throughput_mode = "bursting" # 默认是 'bursting'，可以根据需求调整
   
-  # 示例生命周期策略，可根据需要添加或移除
   lifecycle_policy {
-    transition_to_ia = "30 days"
+    transition_to_ia = "AFTER_30_DAYS" # 使用预定义的值
   }
 
   tags = {
-    Name = var.efs_name
+    Name = var.efs_name # 使用标签来定义名称
   }
 }
 
@@ -35,12 +33,4 @@ resource "aws_security_group" "efs_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-output "efs_file_system_id" {
-  value = aws_efs_file_system.example.id
-}
-
-output "efs_dns_name" {
-  value = aws_efs_file_system.example.dns_name
 }
