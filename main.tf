@@ -2,6 +2,9 @@
 resource "aws_efs_file_system" "example" {
   creation_token = "my-efs-token"
 
+  # 启用加密
+  encrypted = true
+
   # 可选配置：设置吞吐量模式和生命周期策略
   throughput_mode = "bursting" # 默认是 'bursting'，可以根据需求调整
   
