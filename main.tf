@@ -14,7 +14,15 @@ resource "aws_efs_file_system" "example" {
 
   tags = {
     Name = var.efs_name
-    "aws:elasticfilesystem:default-backup" = "enabled"
+  }
+}
+
+# 启用 EFS 自动备份策略
+resource "aws_efs_backup_policy" "policy" {
+  file_system_id = aws_efs_file_system.example.id
+
+  backup_policy {
+    status = "ENABLED"
   }
 }
 
