@@ -14,6 +14,7 @@ resource "aws_efs_file_system" "example" {
 
   tags = {
     Name = var.efs_name
+    "aws:elasticfilesystem:default-backup" = "enabled"
   }
 }
 
