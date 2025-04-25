@@ -14,3 +14,9 @@ variable "subnet_ids" {
   description = "List of subnet IDs for creating mount targets"
   type        = list(string)
 }
+
+# 新增：用于指定现有安全组的变量
+variable "existing_security_group_id" {
+  description = "The ID of an existing security group to associate with the EFS mount targets."
+  type        = string
+}
