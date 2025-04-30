@@ -1,5 +1,5 @@
 # 定义变量值
-vpc_id = "vpc-0aa1f2421a720ffee" # 替换为你的实际 VPC ID
+vpc_id = "" # 替换为你的实际 VPC ID
 
 efs_name = "efs-tf-test"
 
